@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Estado Presionado (El cuadro se hunde) -->
+    <item android:state_pressed="true">
+        <layer-list>
+            <!-- Borde exterior negro -->
+            <item>
+                <shape android:shape="rectangle">
+                    <solid android:color="#000000" />
+                </shape>
+            </item>
+            <!-- Sombra superior/izquierda para efecto hundido -->
+            <item android:top="4dp" android:left="4dp" android:bottom="2dp" android:right="2dp">
+                <shape android:shape="rectangle">
+                    <solid android:color="#40000000" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+
+    <!-- Estado Normal (Relieve 3D estilo consola de los 90) -->
+    <item>
+        <layer-list>
+            <!-- Borde exterior negro píxel -->
+            <item>
+                <shape android:shape="rectangle">
+                    <solid android:color="#000000" />
+                </shape>
+            </item>
+            <!-- Bisel Superior e Izquierdo (Luz de borde) -->
+            <item android:top="3dp" android:left="3dp" android:bottom="3dp" android:right="3dp">
+                <shape android:shape="rectangle">
+                    <solid android:color="#80FFFFFF" />
+                </shape>
+            </item>
+            <!-- Bisel Inferior y Derecho (Sombra de borde) -->
+            <item android:top="7dp" android:left="7dp" android:bottom="3dp" android:right="3dp">
+                <shape android:shape="rectangle">
+                    <solid android:color="#60000000" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+
+</selector>

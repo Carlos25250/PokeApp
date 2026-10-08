@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0F172A"
+    android:orientation="vertical"
+    android:padding="12dp">
+
+    <!-- SELECCIÓN RÁPIDA DE POKÉMON -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <EditText
+            android:id="@+id/etP1"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="4dp"
+            android:layout_weight="1"
+            android:background="@android:drawable/editbox_background"
+            android:hint="Pokémon 1 (Pikachu)"
+            android:paddingHorizontal="8dp"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/etP2"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="4dp"
+            android:layout_weight="1"
+            android:background="@android:drawable/editbox_background"
+            android:hint="Pokémon 2 (Charizard)"
+            android:paddingHorizontal="8dp"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <!-- BOTONES: INICIAR BATALLA E HISTORIAL -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnStartBattle"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:layout_marginEnd="6dp"
+            android:layout_weight="1"
+            android:backgroundTint="#0284C7"
+            android:text="¡Iniciar Batalla Automática!"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:cornerRadius="6dp" />
+
+        <Button
+            android:id="@+id/btnBattleHistory"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:backgroundTint="#8B5CF6"
+            android:text="📜 Historial"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:cornerRadius="6dp" />
+    </LinearLayout>
+
+    <!-- ESCENARIO DE BATALLA CON TU IMAGEN PNG DE FONDO -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/arenaCard"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginBottom="10dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="6dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- TU FONDO PNG -->
+            <ImageView
+                android:id="@+id/ivBattleBg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/battle_bg" />
+
+            <!-- POKÉMON RIVAL (ARRIBA DERECHA) Y SU BARRA HP -->
+            <LinearLayout
+                android:id="@+id/p2HpContainer"
+                android:layout_width="145dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_margin="10dp"
+                android:background="#DD0F172A"
+                android:orientation="vertical"
+                android:padding="6dp">
+
+                <TextView
+                    android:id="@+id/tvP2Name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rival"
+                    android:textColor="#FFFFFF"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <ProgressBar
+                    android:id="@+id/pbP2Hp"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    android:layout_marginTop="2dp"
+                    android:max="100"
+                    android:progress="100"
+                    android:progressTint="#EF4444" />
+
+                <TextView
+                    android:id="@+id/tvP2Hp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:text="100/100 HP"
+                    android:textColor="#38BDF8"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/ivP2Sprite"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="15dp"
+                android:layout_marginTop="15dp"
+                android:src="@android:drawable/ic_menu_help" />
+
+            <!-- TU POKÉMON (ABAJO IZQUIERDA) Y SU BARRA HP -->
+            <ImageView
+                android:id="@+id/ivP1Sprite"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="15dp"
+                android:src="@android:drawable/ic_menu_help" />
+
+            <LinearLayout
+                android:id="@+id/p1HpContainer"
+                android:layout_width="145dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="10dp"
+                android:background="#DD0F172A"
+                android:orientation="vertical"
+                android:padding="6dp">
+
+                <TextView
+                    android:id="@+id/tvP1Name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tu Pokémon"
+                    android:textColor="#FFFFFF"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <ProgressBar
+                    android:id="@+id/pbP1Hp"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    android:layout_marginTop="2dp"
+                    android:max="100"
+                    android:progress="100"
+                    android:progressTint="#22C55E" />
+
+                <TextView
+                    android:id="@+id/tvP1Hp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:text="100/100 HP"
+                    android:textColor="#4ADE80"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- CAJA DE DIÁLOGO DE ATAQUES -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:text="Bitácora de Ataques"
+        android:textColor="#38BDF8"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:cardBackgroundColor="#F8FAFC"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="4dp"
+        app:strokeColor="#0284C7"
+        app:strokeWidth="3dp">
+
+        <ScrollView
+            android:id="@+id/svLog"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/tvBattleLog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="4dp"
+                android:text="¡Ingresa dos Pokémon y presiona Iniciar Batalla!"
+                android:textColor="#0F172A"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+        </ScrollView>
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>
