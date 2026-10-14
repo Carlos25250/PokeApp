@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0F172A"
+    android:orientation="vertical"
+    android:padding="12dp">
+
+    <!-- ENCABEZADO: PISO ACTUAL Y EQUIPO -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:background="#CC0000"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="6dp">
+
+        <TextView
+            android:id="@+id/tvPisoActual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PISO 1 / 10"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvTeamStatusBattle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tu equipo: 3 vivos | Jefe: 3 vivos"
+            android:textColor="#E2E8F0"
+            android:textSize="11sp" />
+    </LinearLayout>
+
+    <!-- ARENA DE COMBATE MÁS ALARGADA -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="320dp"
+        android:layout_marginBottom="8dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="6dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/ivTowerBg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/battle_bg" />
+
+            <!-- RIVAL (ARRIBA DERECHA) -->
+            <LinearLayout
+                android:id="@+id/rivalHpContainer"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_margin="8dp"
+                android:background="#DD0F172A"
+                android:orientation="vertical"
+                android:padding="6dp">
+
+                <TextView
+                    android:id="@+id/tvRivalName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rival"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <ProgressBar
+                    android:id="@+id/pbRivalHp"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    android:layout_marginTop="2dp"
+                    android:max="100"
+                    android:progress="100"
+                    android:progressTint="#EF4444" />
+
+                <TextView
+                    android:id="@+id/tvRivalHp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:text="100/100 HP"
+                    android:textColor="#38BDF8"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/ivRivalSprite"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="15dp"
+                android:layout_marginTop="15dp"
+                android:src="@android:drawable/ic_menu_help" />
+
+            <!-- TU POKÉMON (ABAJO IZQUIERDA) -->
+            <ImageView
+                android:id="@+id/ivPlayerSprite"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="15dp"
+                android:src="@android:drawable/ic_menu_help" />
+
+            <LinearLayout
+                android:id="@+id/playerHpContainer"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="8dp"
+                android:background="#DD0F172A"
+                android:orientation="vertical"
+                android:padding="6dp">
+
+                <TextView
+                    android:id="@+id/tvPlayerName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tu Pokémon"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <ProgressBar
+                    android:id="@+id/pbPlayerHp"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    android:layout_marginTop="2dp"
+                    android:max="100"
+                    android:progress="100"
+                    android:progressTint="#22C55E" />
+
+                <TextView
+                    android:id="@+id/tvPlayerHp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:text="100/100 HP"
+                    android:textColor="#4ADE80"
+                    android:textSize="10sp" />
+            </LinearLayout>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- LOG DE COMBATE -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginBottom="8dp"
+        app:cardBackgroundColor="#F8FAFC"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="4dp"
+        app:strokeColor="#CC0000"
+        app:strokeWidth="2dp">
+
+        <ScrollView
+            android:id="@+id/svTowerLog"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/tvTowerLog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="3dp"
+                android:text="¡Batalla de la Torre Iniciada!\nSelecciona un movimiento."
+                android:textColor="#0F172A"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </ScrollView>
+    </androidx.cardview.widget.CardView>
+
+    <!-- BOTONES DE ATAQUE CLÁSICOS (GRILLA 2x2) -->
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="2"
+        android:rowCount="2"
+        android:alignmentMode="alignMargins"
+        android:columnOrderPreserved="false">
+
+        <Button
+            android:id="@+id/btnMove1"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="3dp"
+            android:backgroundTint="#CC0000"
+            android:text="⚔️ Placaje"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:cornerRadius="8dp" />
+
+        <Button
+            android:id="@+id/btnMove2"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="3dp"
+            android:backgroundTint="#2563EB"
+            android:text="⚡ Ataque Rápido"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:cornerRadius="8dp" />
+
+        <Button
+            android:id="@+id/btnMove3"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="3dp"
+            android:backgroundTint="#D97706"
+            android:text="🔥 Mov. Especial"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:cornerRadius="8dp" />
+
+        <Button
+            android:id="@+id/btnMove4"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="3dp"
+            android:backgroundTint="#16A34A"
+            android:text="🌿 Descanso (Curar)"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:cornerRadius="8dp" />
+    </GridLayout>
+
+    <Button
+        android:id="@+id/btnHuir"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginTop="4dp"
+        android:backgroundTint="#64748B"
+        android:text="🏃 Huir de la Torre"
+        android:textColor="#FFFFFF"
+        android:textSize="11sp"
+        app:cornerRadius="18dp" />
+
+</LinearLayout>

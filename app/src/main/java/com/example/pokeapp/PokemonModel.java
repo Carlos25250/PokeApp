@@ -27,4 +27,6 @@ public class PokemonModel {
     public int getAttack() { return attack; }
     public int getDefense() { return defense; }
     public int getSpeed() { return speed; }
+
+
 }

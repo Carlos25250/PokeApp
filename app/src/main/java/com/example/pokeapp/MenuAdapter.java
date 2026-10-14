@@ -61,7 +61,32 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
             holder.cardContainer.setHexagonColor(Color.parseColor("#CC1E293B"));
         }
 
-        holder.itemView.setOnClickListener(v -> listener.onItemClick(item));
+        // Animación de entrada al aparecer en pantalla
+        holder.itemView.setAlpha(0f);
+        holder.itemView.setScaleX(0.7f);
+        holder.itemView.setScaleY(0.7f);
+        holder.itemView.animate()
+                .alpha(1f)
+                .scaleX(1f)
+                .scaleY(1f)
+                .setDuration(350)
+                .setStartDelay(position * 35L)
+                .start();
+
+        // Animación táctil de rebote (tipo Pokémon) al hacer click
+        holder.itemView.setOnClickListener(v -> {
+            v.animate()
+                    .scaleX(0.88f)
+                    .scaleY(0.88f)
+                    .setDuration(90)
+                    .withEndAction(() -> v.animate()
+                            .scaleX(1.0f)
+                            .scaleY(1.0f)
+                            .setDuration(90)
+                            .withEndAction(() -> listener.onItemClick(item))
+                            .start())
+                    .start();
+        });
     }
 
     @Override

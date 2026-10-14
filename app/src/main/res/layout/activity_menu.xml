@@ -16,7 +16,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true" />
 
-    <!-- Capa de oscurecimiento para legibilidad -->
+    <!-- Capa de oscurecimiento con degradado suave (más kawaii) -->
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -31,19 +31,25 @@
         android:orientation="vertical"
         android:padding="12dp">
 
-        <!-- Encabezado Menú Principal -->
+        <!-- Encabezado Menú Principal Estilo Kawaii -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
+            android:background="#80FFFFFF"
             android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:elevation="4dp">
 
+            <!-- Icono con fondo circular -->
             <ImageView
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:src="@android:drawable/ic_menu_compass"
-                app:tint="#38BDF8" />
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@android:drawable/ic_menu_compass"
+                android:backgroundTint="#F472B6"
+                android:padding="6dp"
+                app:tint="#FFFFFF" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -52,7 +58,11 @@
                 android:text="Menú Principal"
                 android:textColor="#FFFFFF"
                 android:textSize="22sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="3" />
         </LinearLayout>
 
         <!-- Lista del Menú liberada de recortes -->

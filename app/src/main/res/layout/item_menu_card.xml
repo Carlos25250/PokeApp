@@ -8,18 +8,22 @@
     android:layout_margin="2dp"
     android:gravity="center"
     android:orientation="vertical"
-    android:paddingStart="14dp"
-    android:paddingTop="6dp"
-    android:paddingEnd="14dp"
-    android:paddingBottom="6dp">
+    android:paddingStart="16dp"
+    android:paddingTop="8dp"
+    android:paddingEnd="16dp"
+    android:paddingBottom="8dp">
 
-    <!-- Icono del Botón -->
+    <!-- Icono del Botón con sombra -->
     <ImageView
         android:id="@+id/ivIcon"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         android:layout_gravity="center"
         android:contentDescription="Icono"
+        android:shadowColor="#80000000"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="2"
         app:tint="#FFFFFF"
         tools:src="@android:drawable/ic_menu_compass" />
 
@@ -28,12 +32,16 @@
         android:id="@+id/tvTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="4dp"
         android:ellipsize="end"
         android:gravity="center"
         android:maxLines="1"
+        android:shadowColor="#90000000"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="2"
         android:textColor="#FFFFFF"
-        android:textSize="12sp"
+        android:textSize="13sp"
         android:textStyle="bold"
         tools:text="Pokédex Principal" />
 
@@ -42,11 +50,16 @@
         android:id="@+id/tvSubtitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
         android:ellipsize="end"
         android:gravity="center"
         android:maxLines="1"
-        android:textColor="#D9FFFFFF"
-        android:textSize="9sp"
+        android:shadowColor="#60000000"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="1"
+        android:textColor="#F1F5F9"
+        android:textSize="10sp"
         tools:text="Consulta la lista e información" />
 
 </com.example.pokeapp.HexagonView>
