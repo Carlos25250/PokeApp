@@ -71,9 +71,8 @@ public class TowerIntroActivity extends AppCompatActivity {
                             playerTeam.add(teamNames[1]);
                             playerTeam.add(teamNames[2]);
 
-                            Intent intent = new Intent(TowerIntroActivity.this, TowerActivity.class);
+                            Intent intent = new Intent(TowerIntroActivity.this, TowerMapActivity.class);
                             intent.putStringArrayListExtra("playerTeam", playerTeam);
-                            intent.putExtra("floorNumber", 1);
                             startActivity(intent);
                             finish();
                         })

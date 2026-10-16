@@ -1,12 +1,10 @@
 package com.example.pokeapp;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -26,16 +24,15 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.View
     private final List<FavoriteItem> favoriteList;
     private final OnItemClickListener listener;
 
-    // Paleta de colores para variarlos tipo Dashboard/Escuela
-    private final String[] colors = {"#4CAF50", "#E91E63", "#2196F3", "#9C27B0", "#FF9800", "#00BCD4", "#3F51B5"};
-
     public static class FavoriteItem {
         String id;
         String name;
+        String imageUrl;
 
-        public FavoriteItem(String id, String name) {
+        public FavoriteItem(String id, String name, String imageUrl) {
             this.id = id;
             this.name = name;
+            this.imageUrl = imageUrl;
         }
     }
 
@@ -55,17 +52,42 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.View
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         FavoriteItem item = favoriteList.get(position);
-        holder.tvName.setText(item.name);
-
-        // Asignar color según la posición
-        int colorIndex = position % colors.length;
-        holder.cardContainer.setBackgroundColor(Color.parseColor(colors[colorIndex]));
+        holder.tvName.setText(item.name.toUpperCase());
+        holder.tvId.setText("#" + String.format("%03d", Integer.parseInt(item.id)));
 
         // Cargar imagen del Pokémon
-        String imageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + item.id + ".png";
-        Glide.with(context).load(imageUrl).into(holder.ivPokemon);
+        String url = item.imageUrl;
+        if (url == null || url.isEmpty()) {
+            url = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + item.id + ".png";
+        }
+        Glide.with(context).load(url).into(holder.ivPokemon);
 
-        holder.itemView.setOnClickListener(v -> listener.onItemClick(item.id));
+        // Animación de entrada
+        holder.itemView.setAlpha(0f);
+        holder.itemView.setScaleX(0.8f);
+        holder.itemView.setScaleY(0.8f);
+        holder.itemView.animate()
+                .alpha(1f)
+                .scaleX(1f)
+                .scaleY(1f)
+                .setDuration(300)
+                .setStartDelay(position * 30L)
+                .start();
+
+        // Clic con efecto rebote
+        holder.itemView.setOnClickListener(v -> {
+            v.animate()
+                    .scaleX(0.92f)
+                    .scaleY(0.92f)
+                    .setDuration(80)
+                    .withEndAction(() -> v.animate()
+                            .scaleX(1.0f)
+                            .scaleY(1.0f)
+                            .setDuration(80)
+                            .withEndAction(() -> listener.onItemClick(item.id))
+                            .start())
+                    .start();
+        });
     }
 
     @Override
@@ -75,14 +97,13 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.View
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView ivPokemon;
-        TextView tvName;
-        LinearLayout cardContainer;
+        TextView tvName, tvId;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ivPokemon = itemView.findViewById(R.id.ivFavoritePokemon);
             tvName = itemView.findViewById(R.id.tvFavoriteName);
-            cardContainer = itemView.findViewById(R.id.cardContainer);
+            tvId = itemView.findViewById(R.id.tvFavoriteId);
         }
     }
 }

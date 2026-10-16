@@ -3,17 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#B91C1C"
+    android:background="#0F172A"
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- HEADER / BARRA SUPERIOR CON FLECHA DE REGRESO Y TÍTULO -->
+    <!-- HEADER SUPERIOR -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
+        android:background="#CC0000"
         android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="12dp">
 
         <ImageView
             android:id="@+id/btnBack"
@@ -24,6 +26,7 @@
             android:focusable="true"
             android:padding="4dp"
             android:src="@android:drawable/ic_menu_revert"
+            android:contentDescription="Regresar"
             app:tint="#FFFFFF" />
 
         <ImageView
@@ -31,31 +34,39 @@
             android:layout_height="28dp"
             android:layout_marginStart="12dp"
             android:layout_marginEnd="8dp"
-            android:src="@android:drawable/btn_star_big_on" />
+            android:contentDescription="Icono estrella"
+            android:src="@android:drawable/btn_star_big_on"
+            app:tint="#FBBF24" />
 
         <TextView
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Mis Favoritos"
+            android:text="⭐ MIS FAVORITOS ⭐"
             android:textColor="#FFFFFF"
-            android:textSize="22sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
     </LinearLayout>
 
-    <!-- GRID DE TARJETAS POKÉMON -->
-    <ScrollView
+    <!-- RECYCLERVIEW DE FAVORITOS -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvFavorites"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:fillViewport="true">
+        android:clipToPadding="false"
+        android:paddingBottom="16dp" />
 
-        <GridLayout
-            android:id="@+id/gridFavorites"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:columnCount="2"
-            android:paddingBottom="16dp" />
-    </ScrollView>
+    <!-- ESTADO VACÍO -->
+    <TextView
+        android:id="@+id/tvEmptyFavorites"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="⭐ No tienes Pokémon en favoritos.\n¡Explora la Pokédex y añade estrellas!"
+        android:textColor="#94A3B8"
+        android:textSize="14sp"
+        android:visibility="gone" />
 
 </LinearLayout>

@@ -264,13 +264,11 @@ public class TowerActivity extends AppCompatActivity {
                         startActivity(intent);
                         finish();
                     } else {
-                        pisoActual++;
-                        currentBossIndex = 0;
-                        currentPlayerIndex = 0; // Resetea el orden de los Pokémon al inicial
-                        configurarJefeParaPiso();
-                        log("¡Piso superado! Tu equipo se ha curado y vuelve al orden inicial.");
-                        cargarPokemonJugador(); // Carga el primer Pokémon del equipo con HP al máximo
-                        intentarSiguientePiso();
+                        Toast.makeText(this, "¡Piso " + pisoActual + " superado!", Toast.LENGTH_LONG).show();
+                        Intent resultIntent = new Intent();
+                        resultIntent.putExtra("next_floor", pisoActual + 1);
+                        setResult(RESULT_OK, resultIntent);
+                        finish();
                     }
                 }, 2000);
             }
@@ -314,11 +312,7 @@ public class TowerActivity extends AppCompatActivity {
         setControlesActivos(true);
     }
 
-    private void intentarSiguientePiso() {
-        actualizarFondoPiso();
-        cargarPokemonRival();
-        setControlesActivos(true);
-    }
+
 
     private void animarGolpe(ImageView vista) {
         Animation anim = new TranslateAnimation(-10, 10, 0, 0);
