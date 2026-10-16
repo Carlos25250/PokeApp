@@ -1,7 +1,6 @@
 package com.example.pokeapp;
 
 import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.media.AudioAttributes;
 import android.media.MediaPlayer;
 import android.view.HapticFeedbackConstants;
@@ -125,24 +124,23 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
 
             cardContainer.setShapeType(item.getShapeType());
 
-            // Ícono distintivo central
+            // Ícono de insignia cibernética (Cian Neón)
             if (item.getIconResId() != 0) {
                 ivBadgeIcon.setImageResource(item.getIconResId());
+                ivBadgeIcon.setColorFilter(Color.parseColor("#00E5FF")); // Tinte Neón Cian
                 ivBadgeIcon.setVisibility(View.VISIBLE);
             } else {
                 ivBadgeIcon.setVisibility(View.GONE);
             }
 
+            // Cargar arte a color completo de PokeAPI sin filtro plano
             if ("pokeball".equals(item.getShapeType())) {
                 ivIcon.setVisibility(View.GONE);
             } else {
                 ivIcon.setVisibility(View.VISIBLE);
-                try {
-                    int colorSilueta = Color.parseColor(item.getColorHex());
-                    ivIcon.setColorFilter(colorSilueta, PorterDuff.Mode.SRC_IN);
-                } catch (Exception e) {
-                    ivIcon.setColorFilter(Color.parseColor("#F00F172A"), PorterDuff.Mode.SRC_IN);
-                }
+
+                // Quitamos el ColorFilter plano para ver el Pokémon a todo color HD
+                ivIcon.clearColorFilter();
 
                 Glide.with(itemView.getContext())
                         .load(item.getImageUrl())
@@ -152,10 +150,10 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
             itemView.setOnClickListener(v -> {
                 v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
 
-                // Reproducir rugido/cry del Pokémon si aplica
+                // Reproducir rugido del Pokémon
                 playPokemonCry(item.getImageUrl());
 
-                // Animación de rebote cibernético
+                // Animación de interacción Cyber-Tech
                 v.animate()
                         .scaleX(0.88f)
                         .scaleY(0.88f)
@@ -165,9 +163,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
                                     .scaleX(1.0f)
                                     .scaleY(1.0f)
                                     .setDuration(70)
-                                    .withEndAction(() -> {
-                                        listener.onItemClick(item);
-                                    })
+                                    .withEndAction(() -> listener.onItemClick(item))
                                     .start();
                         })
                         .start();
@@ -178,7 +174,6 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
             if (imageUrl == null || !imageUrl.contains("/official-artwork/")) return;
 
             try {
-                // Extraer el ID del Pokémon de la URL (ej: /official-artwork/6.png -> 6)
                 String[] parts = imageUrl.split("/");
                 String lastPart = parts[parts.length - 1];
                 String pokemonIdStr = lastPart.replace(".png", "");
