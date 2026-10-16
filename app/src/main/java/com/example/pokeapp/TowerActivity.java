@@ -117,18 +117,17 @@ public class TowerActivity extends AppCompatActivity {
     }
 
     private void configurarJefeParaPiso() {
+        maxPisos = 8;
         switch (pisoActual) {
-            case 1: bossName = "Líder Brock"; bossTeam = new ArrayList<>(Arrays.asList("geodude", "onix", "vulpix")); break;
-            case 2: bossName = "Líder Misty"; bossTeam = new ArrayList<>(Arrays.asList("staryu", "starmie", "psyduck")); break;
-            case 3: bossName = "Líder Lt. Surge"; bossTeam = new ArrayList<>(Arrays.asList("voltorb", "pikachu", "raichu")); break;
-            case 4: bossName = "Líder Erika"; bossTeam = new ArrayList<>(Arrays.asList("oddish", "gloom", "vileplume")); break;
-            case 5: bossName = "Líder Koga"; bossTeam = new ArrayList<>(Arrays.asList("koffing", "grimer", "weezing")); break;
-            case 6: bossName = "Líder Sabrina"; bossTeam = new ArrayList<>(Arrays.asList("abra", "kadabra", "alakazam")); break;
-            case 7: bossName = "Líder Blaine"; bossTeam = new ArrayList<>(Arrays.asList("growlithe", "ponyta", "arcanine")); break;
-            case 8: bossName = "Líder Giovanni"; bossTeam = new ArrayList<>(Arrays.asList("rhyhorn", "nidoqueen", "nidoking")); break;
-            case 9: bossName = "Alto Mando Lorelei"; bossTeam = new ArrayList<>(Arrays.asList("jynx", "lapras", "cloyster")); break;
-            case 10: bossName = "Campeón Gary"; bossTeam = new ArrayList<>(Arrays.asList("pidgeot", "alakazam", "charizard")); break;
-            default: bossName = "Líder de Piso"; bossTeam = new ArrayList<>(Arrays.asList("rattata", "pidgey", "spearow")); break;
+            case 1: bossName = "Angélica"; bossTeam = new ArrayList<>(Arrays.asList("machamp", "blaziken", "lucario")); break;
+            case 2: bossName = "Víctor"; bossTeam = new ArrayList<>(Arrays.asList("mismagius", "chandelure", "gengar")); break;
+            case 3: bossName = "Campa"; bossTeam = new ArrayList<>(Arrays.asList("dragonite", "salamence", "garchomp")); break;
+            case 4: bossName = "Alina"; bossTeam = new ArrayList<>(Arrays.asList("arcanine", "moltres", "charizard")); break;
+            case 5: bossName = "Rita"; bossTeam = new ArrayList<>(Arrays.asList("alakazam", "metagross", "mewtwo")); break;
+            case 6: bossName = "Everardo"; bossTeam = new ArrayList<>(Arrays.asList("dragonite", "mewtwo", "rayquaza")); break;
+            case 7: bossName = "Edgar"; bossTeam = new ArrayList<>(Arrays.asList("tyranitar", "metagross", "garchomp")); break;
+            case 8: bossName = "Badi"; bossTeam = new ArrayList<>(Arrays.asList("arceus", "mewtwo", "rayquaza")); break;
+            default: bossName = "Badi"; bossTeam = new ArrayList<>(Arrays.asList("arceus", "mewtwo", "rayquaza")); break;
         }
     }
 

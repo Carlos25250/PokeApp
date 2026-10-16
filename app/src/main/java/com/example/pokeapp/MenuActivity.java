@@ -1,11 +1,16 @@
 package com.example.pokeapp;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Rect;
-import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
@@ -14,7 +19,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,44 +32,62 @@ public class MenuActivity extends AppCompatActivity {
     private VideoView videoViewBg;
     private boolean isVideoPrepared = false;
 
+    private ImageView ivTrainerAvatar;
+    private TextView tvTrainerEmail;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Ocultar Action Bar y configurar pantalla completa Cyber-Tech
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(Color.parseColor("#0F172A"));
+        }
+
         setContentView(R.layout.activity_menu);
 
+        // VÍDEO DE FONDO EN VIVO
         videoViewBg = findViewById(R.id.videoViewBg);
-
         try {
             Uri videoUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.videodefondo);
             videoViewBg.setVideoURI(videoUri);
-
-            videoViewBg.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-                @Override
-                public void onPrepared(MediaPlayer mp) {
-                    isVideoPrepared = true;
-                    mp.setLooping(true);
-                    mp.setVolume(0f, 0f);
-                    videoViewBg.start();
-                }
+            videoViewBg.setOnPreparedListener(mp -> {
+                isVideoPrepared = true;
+                mp.setLooping(true);
+                mp.setVolume(0f, 0f);
+                videoViewBg.start();
             });
-
-            videoViewBg.setOnErrorListener(new MediaPlayer.OnErrorListener() {
-                @Override
-                public boolean onError(MediaPlayer mp, int what, int extra) {
-                    return true;
-                }
-            });
-
+            videoViewBg.setOnErrorListener((mp, what, extra) -> true);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+        // CARGAR DATOS DEL ENTRENADOR AUTENTICADO
+        ivTrainerAvatar = findViewById(R.id.ivTrainerAvatar);
+        tvTrainerEmail = findViewById(R.id.tvTrainerEmail);
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            tvTrainerEmail.setText(user.getEmail());
+
+            // Cargar Sprite Animado por defecto (Pikachu/Charizard) o según configuración
+            String defaultAvatarGif = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/25.gif";
+            Glide.with(this).asGif().load(defaultAvatarGif).into(ivTrainerAvatar);
+        }
+
+        // CONFIGURACIÓN DE ELEMENTOS DEL MENÚ
         RecyclerView rvMenu = findViewById(R.id.rvMenu);
         List<MenuItem> menuItems = new ArrayList<>();
 
-        // Altura extendida para abarcar la pantalla
-        int alturaIdentica = 110;
+        int alturaIdentica = 160;
 
+<<<<<<< HEAD
         menuItems.add(new MenuItem("Pokédex Principal", "Enciclopedia Pokémon", android.R.drawable.ic_menu_agenda, "#D9E63946", 1, alturaIdentica));
         menuItems.add(new MenuItem("Mis Favoritos", "Tus Pokémon guardados", android.R.drawable.btn_star_big_on, "#D9FFB703", 1, alturaIdentica));
 
@@ -77,28 +102,50 @@ public class MenuActivity extends AppCompatActivity {
 
         menuItems.add(new MenuItem("Mi Perfil", "Medallas y logros", android.R.drawable.ic_menu_manage, "#D900B4D8", 1, alturaIdentica));
         menuItems.add(new MenuItem("Cerrar Sesión", "Salir de la cuenta", android.R.drawable.ic_menu_preferences, "#D94A5568", 1, alturaIdentica));
+=======
+        String pokeBallUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png";
+        String lucarioUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/448.png";
+        String charizardUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png";
+        String pikachuUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png";
+        String gengarUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/94.png";
+        String psyduckUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/54.png";
+        String snorlaxUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/143.png";
+        String eeveeUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/133.png";
+        String mewtwoUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/150.png";
+        String garchompUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/445.png";
+
+        menuItems.add(new MenuItem("Pokédex Principal", "Lista completa", pokeBallUrl, "#F00F172A", "pokeball", android.R.drawable.ic_menu_search, 1, alturaIdentica));
+        menuItems.add(new MenuItem("Mis Favoritos", "Guardados", lucarioUrl, "#F0581C87", "pokemon", android.R.drawable.btn_star_big_on, 1, alturaIdentica));
+
+        menuItems.add(new MenuItem("Batalla Solo", "Entrena", charizardUrl, "#F0B45309", "pokemon", android.R.drawable.ic_menu_compass, 1, alturaIdentica));
+        menuItems.add(new MenuItem("Modo Versus", "Compite", pikachuUrl, "#F01D4ED8", "pokemon", android.R.drawable.ic_menu_send, 1, alturaIdentica));
+
+        menuItems.add(new MenuItem("Torre Desafío", "Supera niveles", gengarUrl, "#F04338CA", "pokemon", android.R.drawable.ic_menu_myplaces, 1, alturaIdentica));
+        menuItems.add(new MenuItem("¿Quién es?", "Minijuego", psyduckUrl, "#F0A16207", "pokemon", android.R.drawable.ic_menu_help, 1, alturaIdentica));
+
+        menuItems.add(new MenuItem("Zona Safari", "Captura raros", snorlaxUrl, "#F015803D", "pokemon", android.R.drawable.ic_menu_mapmode, 1, alturaIdentica));
+        menuItems.add(new MenuItem("Tabla Tipos", "Efectividades", eeveeUrl, "#F0BE185D", "pokemon", android.R.drawable.ic_menu_sort_by_size, 1, alturaIdentica));
+
+        menuItems.add(new MenuItem("Mi Perfil", "Medallas y logros", mewtwoUrl, "#F00369A1", "pokemon", android.R.drawable.ic_menu_my_calendar, 1, alturaIdentica));
+        menuItems.add(new MenuItem("Cerrar Sesión", "Opciones", garchompUrl, "#F0334155", "pokemon", android.R.drawable.ic_lock_power_off, 1, alturaIdentica));
+>>>>>>> baba7b1b5bd0a80031588d106547933e3736fe2b
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
         rvMenu.setLayoutManager(gridLayoutManager);
 
-        // ItemDecoration con separación ligera y limpia entre hexágonos
         rvMenu.addItemDecoration(new RecyclerView.ItemDecoration() {
             @Override
             public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
                 int position = parent.getChildAdapterPosition(view);
 
-                // Separación lateral justa
-                outRect.left = -10;
-                outRect.right = -10;
+                outRect.left = 8;
+                outRect.right = 8;
+                outRect.top = 8;
+                outRect.bottom = 8;
 
-                // Ligera separación vertical (márgenes positivos leves)
-                outRect.top = 6;
-                outRect.bottom = 6;
-
-                // Desfase para embonar la columna derecha conservando la pequeña distancia
                 if (position % 2 != 0) {
-                    outRect.top = 55;
-                    outRect.bottom = -43;
+                    outRect.top = 35;
+                    outRect.bottom = -15;
                 }
             }
         });

@@ -58,13 +58,15 @@ public class TowerMapActivity extends AppCompatActivity {
         rvFloors = findViewById(R.id.rvFloors);
         rvFloors.setLayoutManager(new LinearLayoutManager(this));
 
-        // Ordenar de la cima (Piso 6) a la base (Piso 1) tal como en la referencia visual
-        floorsList.add(new FloorBoss(6, "PISO 6 • MAESTRO SUPREMO", "Gran Maestro Víctor", new String[]{"dragonite", "mewtwo", "rayquaza"}));
-        floorsList.add(new FloorBoss(5, "PISO 5 • MAESTRO ÉLITE", "Maestro Ricardo", new String[]{"alakazam", "metagross", "mewtwo"}));
-        floorsList.add(new FloorBoss(4, "PISO 4 • MAESTRO FUEGO", "Maestro Campa", new String[]{"arcanine", "moltres", "charizard"}));
-        floorsList.add(new FloorBoss(3, "PISO 3 • MAESTRO DRAGÓN", "Maestro Edgar", new String[]{"dragonite", "salamence", "garchomp"}));
-        floorsList.add(new FloorBoss(2, "PISO 2 • MAESTRO FANTASMA", "Maestro Everardo", new String[]{"mismagius", "chandelure", "gengar"}));
-        floorsList.add(new FloorBoss(1, "PISO 1 • MAESTRO LUCHA", "Maestro Víctor", new String[]{"machamp", "blaziken", "lucario"}));
+        // Definir los 8 pisos de la torre en orden descendente (Piso 8 arriba, Piso 1 abajo)
+        floorsList.add(new FloorBoss(8, "PISO 8 • GRAN MAESTRO SUPREMO", "Badi", new String[]{"arceus", "mewtwo", "rayquaza"}));
+        floorsList.add(new FloorBoss(7, "PISO 7 • GRAN MAESTRO", "Edgar", new String[]{"tyranitar", "metagross", "garchomp"}));
+        floorsList.add(new FloorBoss(6, "PISO 6 • MAESTRO SUPREMO", "Everardo", new String[]{"dragonite", "mewtwo", "rayquaza"}));
+        floorsList.add(new FloorBoss(5, "PISO 5 • MAESTRO ÉLITE", "Rita", new String[]{"alakazam", "metagross", "mewtwo"}));
+        floorsList.add(new FloorBoss(4, "PISO 4 • MAESTRO FUEGO", "Alina", new String[]{"arcanine", "moltres", "charizard"}));
+        floorsList.add(new FloorBoss(3, "PISO 3 • MAESTRO DRAGÓN", "Campa", new String[]{"dragonite", "salamence", "garchomp"}));
+        floorsList.add(new FloorBoss(2, "PISO 2 • MAESTRO FANTASMA", "Víctor", new String[]{"mismagius", "chandelure", "gengar"}));
+        floorsList.add(new FloorBoss(1, "PISO 1 • MAESTRO LUCHA", "Angélica", new String[]{"machamp", "blaziken", "lucario"}));
 
         adapter = new FloorAdapter(floorsList, currentUnlockedFloor, floorBoss -> {
             if (floorBoss.floor <= currentUnlockedFloor) {
@@ -165,21 +167,13 @@ public class TowerMapActivity extends AppCompatActivity {
         private int getPokemonIdByName(String name) {
             switch (name.toLowerCase()) {
                 case "machamp": return 68;
-                case "blaziken": return 257;
-                case "lucario": return 448;
                 case "mismagius": return 429;
-                case "chandelure": return 609;
-                case "gengar": return 94;
                 case "dragonite": return 149;
-                case "salamence": return 373;
-                case "garchomp": return 445;
                 case "arcanine": return 59;
-                case "moltres": return 146;
-                case "charizard": return 6;
                 case "alakazam": return 65;
-                case "metagross": return 376;
-                case "mewtwo": return 150;
                 case "rayquaza": return 384;
+                case "tyranitar": return 248;
+                case "arceus": return 493;
                 default: return 25;
             }
         }
