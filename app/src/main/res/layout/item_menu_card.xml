@@ -1,11 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center_horizontal"
     android:orientation="vertical"
+<<<<<<< HEAD
+    android:paddingStart="16dp"
+    android:paddingTop="8dp"
+    android:paddingEnd="16dp"
+    android:paddingBottom="8dp">
+
+    <!-- Icono del Botón con sombra -->
+    <ImageView
+        android:id="@+id/ivIcon"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_gravity="center"
+        android:contentDescription="Icono"
+        android:shadowColor="#80000000"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="2"
+        app:tint="#FFFFFF"
+        tools:src="@android:drawable/ic_menu_compass" />
+=======
     android:padding="4dp">
 
     <!-- CONTENEDOR DE LA SILUETA / POKÉBOLA -->
@@ -16,6 +35,7 @@
         android:clickable="true"
         android:focusable="true"
         android:foreground="?attr/selectableItemBackground">
+>>>>>>> baba7b1b5bd0a80031588d106547933e3736fe2b
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -47,6 +67,39 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
+        android:layout_marginTop="4dp"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:shadowColor="#90000000"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="2"
+        android:textColor="#FFFFFF"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        tools:text="Pokédex Principal" />
+
+    <!-- Subtítulo / Descripción corta -->
+    <TextView
+        android:id="@+id/tvSubtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:shadowColor="#60000000"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="1"
+        android:textColor="#F1F5F9"
+        android:textSize="10sp"
+        tools:text="Consulta la lista e información" />
+
+</com.example.pokeapp.HexagonView>
+=======
         android:layout_marginTop="6dp"
         android:background="@drawable/bg_text_capsule"
         android:gravity="center"
@@ -66,9 +119,9 @@
             android:shadowDx="2"
             android:shadowDy="2"
             android:shadowRadius="2"
+            android:text="Pokédex Principal"
             android:textColor="#FFFFFF"
-            android:textSize="11sp"
-            tools:text="Pokédex Principal" />
+            android:textSize="11sp" />
 
         <TextView
             android:id="@+id/tvSubtitle"
@@ -82,10 +135,11 @@
             android:shadowDx="1"
             android:shadowDy="1"
             android:shadowRadius="2"
+            android:text="Lista completa"
             android:textColor="#00E5FF"
-            android:textSize="8.5sp"
-            tools:text="Lista completa" />
+            android:textSize="8.5sp" />
 
     </LinearLayout>
 
 </LinearLayout>
+>>>>>>> baba7b1b5bd0a80031588d106547933e3736fe2b
