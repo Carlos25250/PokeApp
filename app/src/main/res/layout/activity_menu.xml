@@ -11,56 +11,17 @@
         android:layout_height="match_parent"
         android:layout_gravity="center" />
 
-<<<<<<< HEAD
-    <!-- Capa de oscurecimiento con degradado suave (más kawaii) -->
+    <!-- Capa de oscurecimiento suave -->
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#80000000" />
 
-    <!-- Encabezado y RecyclerView del Menú -->
-=======
->>>>>>> baba7b1b5bd0a80031588d106547933e3736fe2b
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-<<<<<<< HEAD
-        <!-- Encabezado Menú Principal Estilo Kawaii -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:background="#80FFFFFF"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="8dp"
-            android:elevation="4dp">
-
-            <!-- Icono con fondo circular -->
-            <ImageView
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:background="@android:drawable/ic_menu_compass"
-                android:backgroundTint="#F472B6"
-                android:padding="6dp"
-                app:tint="#FFFFFF" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:text="Menú Principal"
-                android:textColor="#FFFFFF"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                android:shadowColor="#000000"
-                android:shadowDx="1"
-                android:shadowDy="1"
-                android:shadowRadius="3" />
-        </LinearLayout>
-=======
         <!-- HEADER DEL ENTRENADOR -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -76,7 +37,6 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:padding="12dp">
->>>>>>> baba7b1b5bd0a80031588d106547933e3736fe2b
 
                 <!-- SPRITE ANIMADO DEL INICIAL ELEGIDO -->
                 <ImageView

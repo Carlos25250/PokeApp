@@ -13,7 +13,6 @@ import android.view.Gravity;
 import android.view.MotionEvent;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -126,8 +125,14 @@ public class MainActivity extends AppCompatActivity {
         // Reproducir sonido
         btnPlaySound.setOnClickListener(v -> playPokemonSound());
 
-        // Cargar Bulbasaur por defecto (#1)
-        fetchPokemonData("1");
+        // Verificar si se solicitó un Pokémon específico desde otra actividad
+        String requestedPokemonId = getIntent().getStringExtra("selectedPokemonId");
+        if (requestedPokemonId != null && !requestedPokemonId.isEmpty()) {
+            fetchPokemonData(requestedPokemonId);
+        } else {
+            // Cargar Bulbasaur por defecto (#1)
+            fetchPokemonData("1");
+        }
     }
 
     @Override

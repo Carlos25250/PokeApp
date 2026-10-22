@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#0F172A">
 
-    <!-- IMAGEN DE FONDO DE LA TORRE -->
+    <!-- FONDO DE LA TORRE -->
     <ImageView
-        android:id="@+id/ivTowerMapBg"
+        android:id="@+id/ivTowerBg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/fondo1"
-        android:alpha="0.4"
-        android:contentDescription="Torre de combate fondo" />
+        android:src="@drawable/torre" />
 
-    <!-- OVERLAY OSCURO PARA LEGIBILIDAD -->
+    <!-- CAPA OSCURA PARA LEGIBILIDAD -->
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#B30F172A" />
+        android:background="#D90F172A" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,59 +26,36 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- ENCABEZADO ESTILO POKÉMON -->
-        <LinearLayout
+        <!-- CABECERA DE LA TORRE -->
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#CC0000"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="14dp"
-            android:layout_marginBottom="12dp">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:layout_marginEnd="8dp"
-                    android:contentDescription="Icono estrella"
-                    android:src="@android:drawable/btn_star_big_on"
-                    app:tint="#FBBF24" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="TORRE DE COMBATE"
-                    android:textColor="#FFFFFF"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
+            android:layout_marginBottom="12dp"
+            app:cardBackgroundColor="#CC1E293B"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp"
+            app:strokeColor="#00E5FF"
+            app:strokeWidth="1dp">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:fontFamily="sans-serif-black"
                 android:gravity="center"
-                android:text="DERROTA A LOS MAESTROS Y GANA SUS MEDALLAS"
-                android:textColor="#E2E8F0"
-                android:textSize="11sp"
-                android:textStyle="bold" />
-        </LinearLayout>
+                android:padding="14dp"
+                android:text="TORRE DESAFÍO • MAPA DE PISOS"
+                android:textColor="#00E5FF"
+                android:textSize="15sp" />
+        </androidx.cardview.widget.CardView>
 
-        <!-- LISTA DE PISOS -->
+        <!-- RECYCLERVIEW DE PISOS -->
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvFloors"
+            android:id="@+id/rvTowerFloors"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="match_parent"
             android:clipToPadding="false"
-            android:paddingBottom="16dp" />
+            tools:listitem="@layout/item_tower_floor" />
 
     </LinearLayout>
 
-</RelativeLayout>
+</FrameLayout>

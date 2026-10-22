@@ -3,31 +3,16 @@ package com.example.pokeapp;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.LinearGradient;
 import android.graphics.Paint;
-<<<<<<< HEAD
-import android.graphics.Path;
-import android.graphics.Shader;
-=======
 import android.graphics.RectF;
->>>>>>> baba7b1b5bd0a80031588d106547933e3736fe2b
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 
 public class HexagonView extends FrameLayout {
 
-<<<<<<< HEAD
-public class HexagonView extends LinearLayout {
-
-    private final Path hexagonPath = new Path();
-    private final Paint fillPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    private final Paint strokePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    private int hexagonColor = Color.parseColor("#E63946");
-=======
     private String shapeType = "pokemon";
     private Paint redPaint, whitePaint, blackPaint, buttonCenterPaint, strokePaint;
     private RectF ballBounds;
->>>>>>> baba7b1b5bd0a80031588d106547933e3736fe2b
 
     public HexagonView(Context context) {
         super(context);
@@ -48,14 +33,10 @@ public class HexagonView extends LinearLayout {
         setWillNotDraw(false);
         ballBounds = new RectF();
 
-<<<<<<< HEAD
-        fillPaint.setStyle(Paint.Style.FILL);
-=======
         // Rojo Pokébola (Mitad superior)
         redPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         redPaint.setStyle(Paint.Style.FILL);
         redPaint.setColor(Color.parseColor("#EE1515"));
->>>>>>> baba7b1b5bd0a80031588d106547933e3736fe2b
 
         // Blanco Cyber (Mitad inferior)
         whitePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -75,14 +56,6 @@ public class HexagonView extends LinearLayout {
         // Borde Neón Blanco
         strokePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         strokePaint.setStyle(Paint.Style.STROKE);
-<<<<<<< HEAD
-        strokePaint.setColor(Color.parseColor("#99FFFFFF"));
-        strokePaint.setStrokeWidth(4.5f);
-    }
-
-    public void setHexagonColor(int color) {
-        this.hexagonColor = color;
-=======
         strokePaint.setStrokeWidth(4f);
         strokePaint.setColor(Color.parseColor("#FFFFFF"));
     }
@@ -101,58 +74,16 @@ public class HexagonView extends LinearLayout {
 
     public void setStrokeColor(int color) {
         strokePaint.setColor(color);
->>>>>>> baba7b1b5bd0a80031588d106547933e3736fe2b
         invalidate();
     }
 
     @Override
-<<<<<<< HEAD
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        super.onSizeChanged(w, h, oldw, oldh);
-        calculatePath(w, h);
-        updateGradient(w, h);
-    }
-
-    private void updateGradient(float width, float height) {
-        int colorLight = adjustColor(hexagonColor, 1.25f);
-        int colorDark = adjustColor(hexagonColor, 0.7f);
-        LinearGradient gradient = new LinearGradient(
-                0, 0, 0, height,
-                new int[]{colorLight, hexagonColor, colorDark},
-                new float[]{0f, 0.5f, 1f},
-                Shader.TileMode.CLAMP
-        );
-        fillPaint.setShader(gradient);
-    }
-
-    private int adjustColor(int color, float factor) {
-        int a = Color.alpha(color);
-        int r = Math.min(255, Math.max(0, (int) (Color.red(color) * factor)));
-        int g = Math.min(255, Math.max(0, (int) (Color.green(color) * factor)));
-        int b = Math.min(255, Math.max(0, (int) (Color.blue(color) * factor)));
-        return Color.argb(a, r, g, b);
-    }
-
-    private void calculatePath(float width, float height) {
-        hexagonPath.reset();
-        hexagonPath.moveTo(width * 0.25f, 0f);
-        hexagonPath.lineTo(width * 0.75f, 0f);
-        hexagonPath.lineTo(width, height * 0.5f);
-        hexagonPath.lineTo(width * 0.75f, height);
-        hexagonPath.lineTo(width * 0.25f, height);
-        hexagonPath.lineTo(0f, height * 0.5f);
-        hexagonPath.close();
-    }
-
-    @Override
-=======
->>>>>>> baba7b1b5bd0a80031588d106547933e3736fe2b
     protected void onDraw(Canvas canvas) {
         float w = getWidth();
         float h = getHeight();
 
         if ("pokeball".equals(shapeType)) {
-            float radius = Math.min(w, h) / 2f - 8f;
+            float radius = (Math.min(w, h) / 2f) - 8f;
             float cx = w / 2f;
             float cy = h / 2f;
 

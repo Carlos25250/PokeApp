@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Permiso de Internet para consultar la PokéAPI -->
+    <!-- Permiso de Internet para consultar PokéAPI y Firebase -->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -16,10 +16,18 @@
         android:theme="@style/Theme.PokeApp"
         tools:targetApi="31">
 
-        <!-- LoginActivity configurada como la pantalla principal (LAUNCHER) -->
+        <!-- Splash / Pantalla de Carga Inicial -->
+        <activity
+            android:name=".SplashActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- LoginActivity configurada como la pantalla principal de inicio (LAUNCHER) -->
         <activity
             android:name=".LoginActivity"
             android:exported="true"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,35 +35,63 @@
             </intent-filter>
         </activity>
 
+        <!-- Menú Principal Cyber-Tech -->
+        <activity
+            android:name=".MenuActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Pokédex Principal -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Mis Favoritos -->
         <activity
             android:name=".FavoritesActivity"
             android:exported="false"
-            android:label="Mis Favoritos" />
+            android:label="Mis Favoritos"
+            android:screenOrientation="portrait" />
 
-        <activity
-            android:name=".SplashActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
-
-        <activity
-            android:name=".MenuActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" />
-
-        <!-- Pantalla del Sistema de Batalla -->
+        <!-- Sistema de Batalla Solo / Versus -->
         <activity
             android:name=".BattleActivity"
             android:exported="false"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
 
-        <activity android:name=".TowerSelectActivity" />
-        <activity android:name=".TowerIntroActivity" />
-        <activity android:name=".TowerMapActivity" />
-        <activity android:name=".TowerActivity" />
-        <activity android:name=".TowerVictoryActivity" />
+        <!-- Minijuego: ¿Quién es ese Pokémon? -->
+        <activity
+            android:name=".WhosThatPokemonActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- MÓDULO TORRE DE COMBATE -->
+        <activity
+            android:name=".TowerMapActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".TowerIntroActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".TowerSelectActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".TowerActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".TowerVictoryActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
 
     </application>
 

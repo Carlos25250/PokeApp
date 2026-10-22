@@ -39,7 +39,6 @@ public class MenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Ocultar Action Bar y configurar pantalla completa Cyber-Tech
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
@@ -52,7 +51,6 @@ public class MenuActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_menu);
 
-        // VÍDEO DE FONDO EN VIVO
         videoViewBg = findViewById(R.id.videoViewBg);
         try {
             Uri videoUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.videodefondo);
@@ -68,41 +66,21 @@ public class MenuActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        // CARGAR DATOS DEL ENTRENADOR AUTENTICADO
         ivTrainerAvatar = findViewById(R.id.ivTrainerAvatar);
         tvTrainerEmail = findViewById(R.id.tvTrainerEmail);
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             tvTrainerEmail.setText(user.getEmail());
-
-            // Cargar Sprite Animado por defecto (Pikachu/Charizard) o según configuración
             String defaultAvatarGif = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/25.gif";
             Glide.with(this).asGif().load(defaultAvatarGif).into(ivTrainerAvatar);
         }
 
-        // CONFIGURACIÓN DE ELEMENTOS DEL MENÚ
         RecyclerView rvMenu = findViewById(R.id.rvMenu);
         List<MenuItem> menuItems = new ArrayList<>();
 
         int alturaIdentica = 160;
 
-<<<<<<< HEAD
-        menuItems.add(new MenuItem("Pokédex Principal", "Enciclopedia Pokémon", android.R.drawable.ic_menu_agenda, "#D9E63946", 1, alturaIdentica));
-        menuItems.add(new MenuItem("Mis Favoritos", "Tus Pokémon guardados", android.R.drawable.btn_star_big_on, "#D9FFB703", 1, alturaIdentica));
-
-        menuItems.add(new MenuItem("Batalla Solo", "Entrenamiento de combate", android.R.drawable.ic_menu_compass, "#D9FB8500", 1, alturaIdentica));
-        menuItems.add(new MenuItem("Modo Versus", "Combate multijugador", android.R.drawable.ic_menu_myplaces, "#D93A86EF", 1, alturaIdentica));
-
-        menuItems.add(new MenuItem("Torre Desafío", "Desafía la torre de 10 pisos", android.R.drawable.ic_menu_day, "#D97209B7", 1, alturaIdentica));
-        menuItems.add(new MenuItem("¿Quién es?", "Adivina el Pokémon", android.R.drawable.ic_menu_help, "#D9F77F00", 1, alturaIdentica));
-
-        menuItems.add(new MenuItem("Zona Safari", "Captura salvaje", android.R.drawable.ic_menu_camera, "#D92A9D8F", 1, alturaIdentica));
-        menuItems.add(new MenuItem("Tabla Tipos", "Efectividades y debilidades", android.R.drawable.ic_menu_gallery, "#D9E01A4F", 1, alturaIdentica));
-
-        menuItems.add(new MenuItem("Mi Perfil", "Medallas y logros", android.R.drawable.ic_menu_manage, "#D900B4D8", 1, alturaIdentica));
-        menuItems.add(new MenuItem("Cerrar Sesión", "Salir de la cuenta", android.R.drawable.ic_menu_preferences, "#D94A5568", 1, alturaIdentica));
-=======
         String pokeBallUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png";
         String lucarioUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/448.png";
         String charizardUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png";
@@ -128,7 +106,6 @@ public class MenuActivity extends AppCompatActivity {
 
         menuItems.add(new MenuItem("Mi Perfil", "Medallas y logros", mewtwoUrl, "#F00369A1", "pokemon", android.R.drawable.ic_menu_my_calendar, 1, alturaIdentica));
         menuItems.add(new MenuItem("Cerrar Sesión", "Opciones", garchompUrl, "#F0334155", "pokemon", android.R.drawable.ic_lock_power_off, 1, alturaIdentica));
->>>>>>> baba7b1b5bd0a80031588d106547933e3736fe2b
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
         rvMenu.setLayoutManager(gridLayoutManager);
@@ -163,7 +140,10 @@ public class MenuActivity extends AppCompatActivity {
                 Intent intent = new Intent(MenuActivity.this, BattleActivity.class);
                 startActivity(intent);
             } else if (title.contains("Torre")) {
-                Intent intent = new Intent(MenuActivity.this, TowerIntroActivity.class);
+                Intent intent = new Intent(MenuActivity.this, TowerMapActivity.class);
+                startActivity(intent);
+            } else if (title.contains("¿Quién es?")) {
+                Intent intent = new Intent(MenuActivity.this, WhosThatPokemonActivity.class);
                 startActivity(intent);
             } else if (title.contains("Cerrar Sesión")) {
                 cerrarSesion();

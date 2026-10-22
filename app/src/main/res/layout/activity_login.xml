@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-<<<<<<< HEAD
     android:background="#0F172A"
     tools:context=".LoginActivity">
-=======
-    android:background="#0F172A">
->>>>>>> baba7b1b5bd0a80031588d106547933e3736fe2b
 
     <!-- FONDO ORIGINAL -->
     <ImageView
@@ -18,23 +15,10 @@
         android:scaleType="centerCrop"
         android:src="@drawable/fondo1" />
 
-<<<<<<< HEAD
-    <!-- Tarjeta Roja Estilo Pokébola -->
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="220dp"
-        app:cardBackgroundColor="#CC0000"
-        app:cardCornerRadius="32dp"
-        app:cardElevation="16dp"
-        app:strokeColor="#FFFFFF"
-        app:strokeWidth="4dp">
-=======
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
->>>>>>> baba7b1b5bd0a80031588d106547933e3736fe2b
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -57,98 +41,12 @@
                 app:cardCornerRadius="20dp"
                 app:cardElevation="10dp">
 
-<<<<<<< HEAD
-                <!-- Pestañas Superiores Estilo Botones Pokébola -->
-=======
->>>>>>> baba7b1b5bd0a80031588d106547933e3736fe2b
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="20dp">
 
-<<<<<<< HEAD
-                    <Button
-                        android:id="@+id/tvTabLogin"
-                        android:layout_width="0dp"
-                        android:layout_height="42dp"
-                        android:layout_marginEnd="4dp"
-                        android:layout_weight="1"
-                        android:backgroundTint="#FFFFFF"
-                        android:text="Iniciar Sesión"
-                        android:textColor="#CC0000"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        app:cornerRadius="21dp" />
-
-                    <Button
-                        android:id="@+id/tvTabRegister"
-                        android:layout_width="0dp"
-                        android:layout_height="42dp"
-                        android:layout_marginStart="4dp"
-                        android:layout_weight="1"
-                        android:backgroundTint="#0F172A"
-                        android:text="Registrarse"
-                        android:textColor="#FFFFFF"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        app:cornerRadius="21dp"
-                        app:strokeColor="#FFFFFF"
-                        app:strokeWidth="1dp" />
-                </LinearLayout>
-
-                <!-- Campo Correo Electrónico -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Correo electrónico"
-                    android:textColor="#FFFFFF"
-                    android:textSize="13sp"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/etEmail"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="6dp"
-                    android:layout_marginBottom="16dp"
-                    android:background="@android:drawable/editbox_background"
-                    android:backgroundTint="#38BDF8"
-                    android:drawableStart="@android:drawable/ic_dialog_email"
-                    android:drawablePadding="12dp"
-                    android:hint="usuario@correo.com"
-                    android:inputType="textEmailAddress"
-                    android:padding="12dp"
-                    android:textColor="#FFFFFF"
-                    android:textColorHint="#94A3B8"
-                    android:textSize="14sp" />
-
-                <!-- Campo Contraseña -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Contraseña"
-                    android:textColor="#FFFFFF"
-                    android:textSize="13sp"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/etPassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="6dp"
-                    android:layout_marginBottom="12dp"
-                    android:background="@android:drawable/editbox_background"
-                    android:backgroundTint="#FACC15"
-                    android:drawableStart="@android:drawable/ic_lock_idle_lock"
-                    android:drawablePadding="12dp"
-                    android:hint="••••••••"
-                    android:inputType="textPassword"
-                    android:padding="12dp"
-                    android:textColor="#FFFFFF"
-                    android:textColorHint="#94A3B8"
-                    android:textSize="14sp" />
-=======
                     <!-- PESTAÑAS -->
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -342,7 +240,6 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:orientation="vertical">
->>>>>>> baba7b1b5bd0a80031588d106547933e3736fe2b
 
             <ImageView
                 android:id="@+id/ivCharizardLoading"
@@ -350,72 +247,6 @@
                 android:layout_height="120dp"
                 android:scaleType="fitCenter" />
 
-<<<<<<< HEAD
-                    <CheckBox
-                        android:id="@+id/cbRemember"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:buttonTint="#FFFFFF"
-                        android:text="Recordarme"
-                        android:textColor="#FFFFFF"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:id="@+id/tvForgotPassword"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:text="¿Olvidaste tu contraseña?"
-                        android:textColor="#FACC15"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
-                </RelativeLayout>
-
-                <!-- Botón Principal Iniciar Sesión -->
-                <Button
-                    android:id="@+id/btnLogin"
-                    android:layout_width="match_parent"
-                    android:layout_height="52dp"
-                    android:backgroundTint="#FFFFFF"
-                    android:text="Iniciar Sesión"
-                    android:textAllCaps="false"
-                    android:textColor="#CC0000"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:cornerRadius="26dp" />
-
-                <!-- Separador con texto "o continúa con" -->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="16dp"
-                    android:gravity="center"
-                    android:text="────  o continúa con  ────"
-                    android:textColor="#FFFFFF"
-                    android:textSize="12sp" />
-
-                <!-- Botón Secundario Crear una cuenta -->
-                <Button
-                    android:id="@+id/btnRegister"
-                    android:layout_width="match_parent"
-                    android:layout_height="52dp"
-                    android:backgroundTint="#1E88E5"
-                    android:text="Crear una cuenta"
-                    android:textAllCaps="false"
-                    android:textColor="#FFFFFF"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    app:cornerRadius="26dp"
-                    app:strokeColor="#FFFFFF"
-                    app:strokeWidth="2dp" />
-
-            </LinearLayout>
-        </ScrollView>
-    </androidx.cardview.widget.CardView>
-=======
             <ProgressBar
                 android:layout_width="32dp"
                 android:layout_height="32dp"
@@ -435,6 +266,5 @@
         </LinearLayout>
 
     </FrameLayout>
->>>>>>> baba7b1b5bd0a80031588d106547933e3736fe2b
 
 </FrameLayout>

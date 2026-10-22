@@ -39,64 +39,9 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
     }
 
     @Override
-<<<<<<< HEAD
-    public void onBindViewHolder(@NonNull MenuViewHolder holder, int position) {
-        MenuItem item = itemList.get(position);
-
-        holder.tvTitle.setText(item.getTitle());
-        holder.tvSubtitle.setText(item.getSubtitle());
-        holder.ivIcon.setImageResource(item.getIconResId());
-
-        // Convertir altura DP a Pixeles
-        int heightPx = (int) TypedValue.applyDimension(
-                TypedValue.COMPLEX_UNIT_DIP,
-                item.getHeightDp(),
-                holder.itemView.getContext().getResources().getDisplayMetrics()
-        );
-
-        ViewGroup.LayoutParams params = holder.itemView.getLayoutParams();
-        params.height = heightPx;
-        holder.itemView.setLayoutParams(params);
-
-        // Asigna el color dinámico al hexágono pintándolo directamente en la vista
-        try {
-            int color = Color.parseColor(item.getColorHex());
-            holder.cardContainer.setHexagonColor(color);
-        } catch (Exception e) {
-            holder.cardContainer.setHexagonColor(Color.parseColor("#CC1E293B"));
-        }
-
-        // Animación de entrada al aparecer en pantalla
-        holder.itemView.setAlpha(0f);
-        holder.itemView.setScaleX(0.7f);
-        holder.itemView.setScaleY(0.7f);
-        holder.itemView.animate()
-                .alpha(1f)
-                .scaleX(1f)
-                .scaleY(1f)
-                .setDuration(350)
-                .setStartDelay(position * 35L)
-                .start();
-
-        // Animación táctil de rebote (tipo Pokémon) al hacer click
-        holder.itemView.setOnClickListener(v -> {
-            v.animate()
-                    .scaleX(0.88f)
-                    .scaleY(0.88f)
-                    .setDuration(90)
-                    .withEndAction(() -> v.animate()
-                            .scaleX(1.0f)
-                            .scaleY(1.0f)
-                            .setDuration(90)
-                            .withEndAction(() -> listener.onItemClick(item))
-                            .start())
-                    .start();
-        });
-=======
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         MenuItem item = items.get(position);
         holder.bind(item, listener);
->>>>>>> baba7b1b5bd0a80031588d106547933e3736fe2b
     }
 
     @Override
